@@ -10,4 +10,4 @@ plot(pcp$meters, type="l", col="blue")
 #git checkout -b julia (make new branch)
 
 se <- function(x)
-  sqrt(var(x)/length(x))
+  sqrt(var(x, na.rm=TRUE)/length(x))
