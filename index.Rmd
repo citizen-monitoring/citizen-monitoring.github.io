@@ -45,3 +45,13 @@ response %T>%                          # note tee operator %T>% for glimpse
   write_csv('data/f_satis.csv')        # write out csv
   summary(response)
 ```
+
+What is the age distribution of survey participants?
+
+```{r}
+#read in csv
+
+response2 = read.csv('data/ugandasms.csv')
+
+hist(response2$age, main = "Age Distribution of Survey Participants", xlab = "Age", ylab = "Frequency")
+```
