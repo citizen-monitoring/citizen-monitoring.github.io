@@ -33,7 +33,7 @@ library(readr)
 library(dplyr)
 
 # read in csv
-response = read_csv('data/ugandasms.csv') 
+response = read.csv('data/ugandasms.csv') 
 
 # using dplyr
 response %T>%                          # note tee operator %T>% for glimpse
@@ -50,8 +50,30 @@ What is the age distribution of survey participants?
 
 ```{r}
 #read in csv
-
 response2 = read.csv('data/ugandasms.csv')
 
 hist(response2$age, main = "Age Distribution of Survey Participants", xlab = "Age", ylab = "Frequency")
 ```
+
+
+How many men are dissatisfied with trash collection services?
+
+```{r}
+# load libraries
+#library(readr)
+#library(dplyr)
+
+#read in csv
+response2 = read.csv('data/ugandasms.csv')
+
+response2 %T>%                         # note tee operator %T>% for glimpse
+  glimpse() %>%                        # view data
+  select(gender, satis) %>%            # limit columns
+  filter(gender  == 'male') %>%        # limit rows
+  group_by(satis) %>%                  # get count by first grouping
+  summarize(n = n()) %>%               # then summarize
+  write_csv('data/m_dissat.csv')       # write out csv
+  summary(response2)
+```
+
+There are 198 men who are dissatisfied with trash collection services in the baseline survey.
