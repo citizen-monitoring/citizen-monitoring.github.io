@@ -92,6 +92,55 @@ img {
 <h2>Plans for archiving and preservation of access</h2>
 <p>To be specified by PI.</p>
 </div>
+<div id="data-question" class="section level2">
+<h2>Data Question</h2>
+<p>How many women are very satisfied with solid waste collection?</p>
+<pre class="r"><code># load libraries
+library(readr)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code># read in csv
+response = read_csv('data/ugandasms.csv') 
+
+# using dplyr
+response %T&gt;%                          # note tee operator %T&gt;% for glimpse
+  glimpse() %&gt;%                        # view data
+  select(gender, satis) %&gt;%            # limit columns
+  filter(gender  == 'female') %&gt;%      # limit rows
+  group_by(satis) %&gt;%                  # get count by first grouping
+  summarize(n = n()) %&gt;%               # then summarize
+  write_csv('data/f_satis.csv')        # write out csv</code></pre>
+<pre><code>## Observations: 1,040
+## Variables: 6
+## $ Nominated  (chr) &quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes...
+## $ Zone       (chr) &quot;LUGOBA&quot;, &quot;KISOWERA&quot;, &quot;KISOWERA&quot;, &quot;GOOD HOPE&quot;, &quot;LUG...
+## $ years_zone (int) 6, 30, 15, 1, 2, 3, 3, 13, 1, 2, 9, 35, 10, 4, 35, ...
+## $ gender     (chr) &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;fema...
+## $ age        (int) 30, 40, 29, 42, 23, 30, 26, 32, 25, 22, 30, 35, 29,...
+## $ satis      (chr) &quot;very_dissatisf&quot;, &quot;satisfied&quot;, &quot;satisfied&quot;, &quot;very_s...</code></pre>
+<pre class="r"><code>  summary(response)</code></pre>
+<pre><code>##   Nominated             Zone             years_zone        gender         
+##  Length:1040        Length:1040        Min.   : 1.000   Length:1040       
+##  Class :character   Class :character   1st Qu.: 2.000   Class :character  
+##  Mode  :character   Mode  :character   Median : 5.000   Mode  :character  
+##                                        Mean   : 9.192                     
+##                                        3rd Qu.:13.000                     
+##                                        Max.   :65.000                     
+##       age          satis          
+##  Min.   :18.0   Length:1040       
+##  1st Qu.:23.0   Class :character  
+##  Median :28.0   Mode  :character  
+##  Mean   :30.5                     
+##  3rd Qu.:35.0                     
+##  Max.   :76.0</code></pre>
+</div>
 </div>
 
 

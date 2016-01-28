@@ -23,3 +23,25 @@ To be specified by PI.
 
 ## Plans for archiving and preservation of access
 To be specified by PI.
+
+## Data Question
+How many women are very satisfied with solid waste collection?
+
+```{r}
+# load libraries
+library(readr)
+library(dplyr)
+
+# read in csv
+response = read_csv('data/ugandasms.csv') 
+
+# using dplyr
+response %T>%                          # note tee operator %T>% for glimpse
+  glimpse() %>%                        # view data
+  select(gender, satis) %>%            # limit columns
+  filter(gender  == 'female') %>%      # limit rows
+  group_by(satis) %>%                  # get count by first grouping
+  summarize(n = n()) %>%               # then summarize
+  write_csv('data/f_satis.csv')        # write out csv
+  summary(response)
+```
