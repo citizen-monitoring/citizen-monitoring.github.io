@@ -10,7 +10,7 @@ ________________________________________
 ## Types of data
 Data collected will consist of text survey responses. Information will include phone numbers, timestamp, location information, demographic information, and a survey response, which may be numeric or text. Data will be coded to ensure anonymity of respondents. 
 
-The data will be categorized according to which survey question it is answering. This will be done with the timestamp data that comes in with each survey response. Once responses are separated into the proper questions, summary statistics will be generated for each one.
+The data will be categorized according to which survey question they are answering. This will be done with the timestamp data that comes in with each survey response. Once responses are separated into the proper questions, summary statistics will be generated for each one.
  
 ## Data and metadata standards
 Metadata will include explanations of each of the following category headings: nominated, zone, years_zone, gender, age, and satisfaction.
