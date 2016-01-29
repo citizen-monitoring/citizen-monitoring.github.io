@@ -79,7 +79,7 @@ response2 %T>%                         # note tee operator %T>% for glimpse
 There are 198 men who are dissatisfied with trash collection services in the baseline survey.
 >>>>>>> 076cbbca7902c2d7b782f01a087f254c9200ff79
 
-<<<<<<< HEAD
+
 Which zone has the most dissatisified survey respondents?
 ```{r}
 library(dplyr)
@@ -98,4 +98,3 @@ response3 %T>%
   summary(response3)
 ```
 
-=======
