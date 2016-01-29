@@ -55,3 +55,22 @@ response2 = read.csv('data/ugandasms.csv')
 
 hist(response2$age, main = "Age Distribution of Survey Participants", xlab = "Age", ylab = "Frequency")
 ```
+
+Which zone has the most dissatisified survey respondents?
+```{r}
+library(dplyr)
+library(readr)
+#read in csv
+response3=read.csv('data/ugandasms.csv')
+View(response3)
+
+#using dplyr
+response3 %T>%
+  select(satis,Zone) %>%
+  filter(satis == "very_dissatisf") %>%
+  group_by(Zone) %>%
+  summarize(n = n()) %>%
+  write_csv('data/zonedissatis.csv')
+  summary(response3)
+```
+
