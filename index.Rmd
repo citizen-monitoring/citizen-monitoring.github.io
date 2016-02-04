@@ -43,7 +43,8 @@ response %T>%                          # note tee operator %T>% for glimpse
   group_by(satis) %>%                  # get count by first grouping
   summarize(n = n()) %>%               # then summarize
   write_csv('data/f_satis.csv')        # write out csv
-  summary(response)
+  f_satis = read.csv('data/f_satis.csv')   # 
+  head(f_satis)
 ```
 
 What is the age distribution of survey participants?
@@ -60,8 +61,8 @@ How many men are dissatisfied with trash collection services?
 
 ```{r}
 # load libraries
-#library(readr)
-#library(dplyr)
+library(readr)
+library(dplyr)
 
 #read in csv
 response2 = read.csv('data/ugandasms.csv')
